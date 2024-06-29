@@ -1,0 +1,27 @@
+
+
+<div class="box2 container align-items-center pt-3 px-4 mt-3">
+    <div class="row">
+        <div class="col-2 cartimg">
+            <img [src]="product.image_url"  alt=""  width="50px" height="50px">
+        </div>
+        <div class="col-7 align-items-center ps-4">
+            <div class="text-white medium">{{product.name}} </div>
+        </div>
+        <div class="col-3">
+            <div class="d-flex mb-2">
+                <button class="cartminus bg-transparent border-0 text-white" (click)="cartService.toggleQty(product.product_id , false)">
+                    -
+                </button>
+                <div class="text-white mx-3">
+                    {{product.boughtQty}}
+                </div>
+                <button class="cartplus bg-transparent border-0 text-white" (click)="cartService.toggleQty(product.product_id , true)" >
+                    +
+                </button>
+            </div>
+            <div class="text-white small d-flex align-items-center justify-content-start">LKR {{product.price}}</div>
+        </div>
+    </div>
+    
+</div>

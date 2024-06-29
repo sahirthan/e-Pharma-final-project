@@ -1,0 +1,81 @@
+table {
+	border-collapse: collapse;
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 50px;
+	text-align: center;
+	font-family: Arial, sans-serif;
+	box-shadow:1px 1px 1px #999;
+}
+
+table td {
+	border: 1px solid #ccc;
+	padding: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #555;
+	background-color: #fff;
+	transition: all 0.3s ease-in-out;
+}
+
+table td:hover {
+	background-color: #eee;
+	transform: scale(1.1);
+}
+
+table th {
+	background-color: #0B254B;
+	color: #fff;
+	padding: 10px;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+
+
+.form-outer{
+    padding: 20px;
+    margin: 0 auto;
+    
+}
+.form form{ 
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgb(237, 242, 244);
+    /* box-shadow: 0px 0px 20px 1px rgb(141, 153, 174); */
+    box-shadow:4px 4px 5px 1px rgb(141, 153, 174);
+}
+.form form h6{
+    text-transform: uppercase;
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.textfi{
+    padding-bottom: 10px;
+}
+.box{
+    height: 40px;
+    width: 100%;
+    padding: 5px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: white;
+    text-align: center;
+    border: 1px solid rgb(43, 45, 66);
+}
+.btn:hover{
+    background-color:#0B254B ;
+    color: white;
+}
+
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+    width: auto;
+  }

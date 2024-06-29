@@ -1,0 +1,80 @@
+<div class="background">
+    <div class="container">
+        <div class="row " style="height: 85vh;">
+            <div class="col  align-content-center text-center " style="background-color: #EAF5FF;">
+                <img src="assets/images/Logo 2.png" alt="" height="120px">
+            </div>
+            <div class="col align-content-center ps-5">
+                <p class="fs-3 fw-bold">Order Product Details :</p>
+                <p class="fs-5 fw-bold mb-5" style="color: #065FA8; line-height: 0.7rem;">
+                    {{orderDetails}}
+                </p>
+                <hr style="width: 500px;">
+                <div class="row">
+                    <div class="col">
+                        Subtotal
+                    </div>
+                    <div class="col">
+                        LKR {{cartService.cartTotalPrice}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Delivery
+                    </div>
+                    <div class="col">
+                        Free Delivery
+                    </div>
+                </div>
+                <hr style="width: 500px;">
+                <div class="row mb-5">
+                    <div class="col">
+                        Total
+                    </div>
+                    <div class="col">
+                        LKR {{cartService.cartTotalPrice}}
+                    </div>
+                </div>
+                <p class="fs-5 fw-bold">Delivery Method</p>
+                <div class="row  mb-3" style="width: 400px;">
+                    <div class="container mt-3 radio-button-container  ">
+                        <div class="form-check m-2">
+                            <input 
+                              class="form-check-input custom-radio" 
+                              type="radio" 
+                              name="paymentMethod" 
+                              id="cardPayment" 
+                              value="card" 
+                              [(ngModel)]="selectedPaymentMethod" 
+                              checked
+                            >
+                            <label class="form-check-label" for="cardPayment">
+                              Card Payment
+                            </label>
+                          </div>
+                          <div class="form-check m-2">
+                            <input 
+                              class="form-check-input custom-radio" 
+                              type="radio" 
+                              name="paymentMethod" 
+                              id="cashOnDelivery" 
+                              value="cash" 
+                              [(ngModel)]="selectedPaymentMethod"
+                            >
+                            <label class="form-check-label" for="cashOnDelivery">
+                              Cash On Delivery
+                            </label>
+                          </div>
+                          
+                          
+                    </div>
+                </div>
+
+                <div class="row justify-content-end">
+                    <button class="btn btn-primary" style="width: 200px;" (click)="payScreen()">Go To Payment</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

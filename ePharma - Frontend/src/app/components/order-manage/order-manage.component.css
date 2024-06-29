@@ -1,0 +1,33 @@
+table {
+	border-collapse: collapse;
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 50px;
+	text-align: center;
+	font-family: Arial, sans-serif;
+	box-shadow:1px 1px 1px #999;
+	
+}
+
+table td {
+	border: 1px solid #ccc;
+	padding: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #555;
+	background-color: #fff;
+	transition: all 0.3s ease-in-out;
+}
+
+table td:hover {
+	background-color: #eee;
+	transform: scale(1.1);
+}
+
+table th {
+	background-color: #0B254B;
+	color: #fff;
+	padding: 10px;
+	font-size: 16px;
+	text-transform: uppercase;
+}

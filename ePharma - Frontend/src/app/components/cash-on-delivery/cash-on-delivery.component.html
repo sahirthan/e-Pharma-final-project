@@ -1,0 +1,51 @@
+<div class="background">
+    <div class="container">
+        <div class="row" style="height: 85vh;">
+            <div class="col align-content-center text-center" style="background-color: #EAF5FF;">
+                <img src="assets/images/Logo 2.png" alt="" height="120px">
+            </div>
+            <div class="col align-content-center ps-5">
+                <div class="card" style="width: 30rem;">
+                    <div class="card-body">
+                        <p class="fs-5 fw-bold">Order Product Details :</p>
+                        <p class="fs-6 mb-3" style="line-height: 0.7rem;">
+                            {{orderDetails}}
+                        </p>
+                        <hr style="width: 430px;">
+                        <div class="row">
+                            <div class="col">Subtotal</div>
+                            <div class="col">LKR {{cartService.cartTotalPrice}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-3" style="width: 30rem;">
+                    <div class="card-header fw-bold" style="background-color: #45abff; color:#063EAB;">
+                        Delivery Details
+                    </div>
+                    <form [formGroup]="payNowForm!" (ngSubmit)="payNow()" class="card-body">
+                        <div class="form-group my-2">
+                            <input type="text" class="form-control" formControlName="username" placeholder="Name">
+                        </div>
+                        <div class="form-group my-2">
+                            <input type="text" class="form-control" formControlName="tp" placeholder="Mobile Number">
+                        </div>
+                        <div class="form-group my-2">
+                            <input type="email" class="form-control" formControlName="email_address"
+                                placeholder="Email Address">
+                        </div>
+                        <div class="form-group my-2">
+                            <input type="text" class="form-control" formControlName="location" placeholder="Location">
+                        </div>
+                        <!-- <div class="form-group my-2">
+                            <input type="hide" class="form-control" formControlName="date">
+                        </div> -->
+                        <div class="row justify-content-end pt-2 mt-1" style="width: 28rem;">
+                            <button class="btn btn-primary" style="width: 200px;">Pay now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

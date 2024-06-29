@@ -1,0 +1,77 @@
+<div class="container pb-5">
+    <div class="container  mt-5">
+        <div class="row text-center">
+            <div class="col">
+                <p class="header-text" style="line-height: 1.2; font-size: 2rem;">Orders Manage Dashboard</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div id="alert-placeholder"></div>
+        <div class="col-12 ">
+            <div class="form-outer">
+                <div class="form">
+                    <form [formGroup]="updateOrderForm!" (submit)="addOrder()">
+                        <p class="fs-4 fw-bold">Order Status Update</p>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group ">
+                                    <input type="text" class="form-control" formControlName="date" placeholder="Date">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group ">
+                                    <input type="text" class="form-control" formControlName="status" placeholder="Status">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-primary px-5" type="submit">Submit</button>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Ordered Products</th>
+                    <th>Price</th>
+                    <th>location</th>
+                    <th>Payment Method</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                    <td>{{order.order_id}}</td>
+                    <td>{{order.username}}</td>
+                    <td>{{order.productname}}</td>
+                    <td>{{order.price}}</td>
+                    <td>{{order.location}}</td>
+                    <td>{{order.pay_method}}</td>
+                    <td>{{order.date}}</td>
+                    <td>{{order.status}}</td>
+                    <td><button type="submit" class="btn text-warning" (click)="updateOrder(order)">Update</button>
+                    <td><button type="submit" class="btn text-danger" (click)="deleteOrder(order)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        
+    </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,77 @@
+<div class="container">
+  
+    <div class="container  my-5">
+        <div class="row text-center">
+            <div class="col">
+                <p class="header-text" style="line-height: 1.2; font-size: 2rem;">Product Manage Dashboard</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+      <div class="form-outer col-8">
+        <div class="form">
+          <form [formGroup]="addProductForm!" (submit)="addProduct()">
+            <div id="alert-placeholder"></div>
+            <div class="form-group py-2">
+              <input type="text" class="form-control"  formControlName="name" placeholder="Product Name">
+            </div>
+            <div class="form-group py-2">
+              <input type="number" class="form-control"  formControlName="price" placeholder="Product Price">
+            </div>
+            <div class="form-group py-2">
+              <input type="text" class="form-control" formControlName="image_url" placeholder="Product ImageURL">
+            </div>
+            <div class="form-group py-2">
+              <input type="text" class="form-control"  formControlName="description" placeholder="Product Details">
+            </div>
+            <div class="form-group py-2">
+              <input type="text" class="form-control"  formControlName="benefits" placeholder="Product Benefits">
+            </div>
+            <div class="form-group pt-2 pb-4">
+              <input type="text" class="form-control"  formControlName="category" placeholder="Product Category">
+              <label class=" ps-3 small">Beauty Care | Mobility AIDS | Pharmaceuticals | Vitamin & Supplement | Baby Care</label>
+            </div>
+            <div class="row">
+              <div class="col">
+                <button class="btn btn-primary px-5" type="submit">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+</div>
+<div class="container pb-5">
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Benifits</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td>{{product.product_id}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.benefits}}</td>
+                    <td>{{product.description}}</td>
+                    <td>{{product.category}}</td>
+                    <td>{{product.price}}</td>
+                    <td><button type="submit" class="btn btn-warning" (click)="updateProduct(product)">Update</button></td>
+                    <td><button type="submit" class="btn btn-danger"(click)="deleteProduct(product)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<app-footer></app-footer>

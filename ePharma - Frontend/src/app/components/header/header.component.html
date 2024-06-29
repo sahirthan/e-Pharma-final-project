@@ -1,0 +1,74 @@
+<div class="top-bar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
+        <div class="top-bar-content ps-5">
+            <span class="small me-3">Contact us: (+94)72 922 6596 </span>
+            <span class="small">Email : epharma@gmail.com</span>
+        </div>
+        <div class="social-icons pe-5">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="mailto:epharama@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+</div>
+<nav class="navbar container-fluid navbar-expand-lg bg-light sticky-top  p-4">
+    
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html"><img src="assets/images/Logo 1.png" width="100px"
+                class="img-fluid mx-5"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse header-center" id="navbarNav">
+            <ul class="navbar-nav mx-auto navi-header-text">
+                <li class="nav-item mx-3">
+                    <a routerLink="/home" routerLinkActive="active" class="nav-link ">Home</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a routerLink="/product" routerLinkActive="active" class="nav-link">Product</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a routerLink="/services" routerLinkActive="active" class="nav-link ">Services</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a routerLink="/aboutus" routerLinkActive="active" class="nav-link ">AboutUs</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a *ngIf="isLoggedIn && isUser" routerLink="/orders" routerLinkActive="active" class="nav-link ">Orders</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a *ngIf="isLoggedIn && isAdmin" routerLink="/productmanage" routerLinkActive="active" class="nav-link ">Product Manage</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a *ngIf="isLoggedIn && isAdmin" routerLink="/ordermanage" routerLinkActive="active" class="nav-link ">Order Manage</a>
+                </li>
+            </ul>
+        </div>
+        <form class="d-flex mx-3 mt-1">
+            <a href="" routerLink="/product"><i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i></a>
+        </form>
+        <div class="header-right mx-3">
+            <p class="header-right-cart-count">{{this.cartItemCount}}</p>
+            <button type="button" class="header-btn header-cart bg-transparent border-0" (click)="cartService.openCartSideBar()" >
+                <img src="assets\svg\cart.svg" alt="" width="30" height="30">
+                <span class="cart-number"></span>
+            </button>
+        </div>
+        <div class="header-right mx-3">
+            <a routerLink="/login"><button type="button" class="header-btn-profile header-cart bg-transparent border-0">
+                <img src="assets\svg\user.svg" alt="" width="30" height="30">
+            </button></a>
+        </div>
+        <div class="header-right" *ngIf="isLoggedIn">
+            <button type="button"  (click)="logOut()" class="header-btn-profile header-cart bg-transparent border-0 ">
+                <img src="assets\svg\logout.svg" alt="" width="20" height="20" >
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Slide Bar  -->
+<div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow">
+    <app-cart></app-cart>
+</div>

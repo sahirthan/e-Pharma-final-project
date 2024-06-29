@@ -1,0 +1,16 @@
+<div class="col py-5 cus-bg-color">
+    <div class="col-12 text-center ">
+        <p class="header-text"style="line-height: 1; font-size: 1.7rem;" >Beauty Care</p>
+        <p class="header-support-text">Our top selling product that you may like.</p>
+    </div>
+    <div class="container pt-5">
+        <div class="menu-grid ">
+            <div *ngFor="let product of products">
+                <app-product-card [product]="product"></app-product-card>
+            </div>
+            
+        </div>
+    </div>
+</div>
+    
+

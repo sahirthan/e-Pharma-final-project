@@ -1,0 +1,104 @@
+import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
+import { EmailService } from 'src/app/services/email.service';
+import { OrderService } from 'src/app/services/order.service';
+
+@Component({
+  selector: 'app-cash-on-delivery',
+  templateUrl: './cash-on-delivery.component.html',
+  styleUrls: ['./cash-on-delivery.component.css']
+})
+export class CashOnDeliveryComponent {
+
+  payNowForm?: FormGroup<any>;
+  orderDetails: string = '';
+  pay_method: string = 'Cash On Delivery';
+  userId!: number;
+
+  constructor(public cartService: CartService, private activeRoute: ActivatedRoute, private router: Router, private fb: FormBuilder, private orderService: OrderService,private emailService:EmailService) { }
+
+
+  ngOnInit(): void {
+
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.userId = user.user_id;
+
+    this.activeRoute.queryParams.subscribe(params => {
+      this.orderDetails = params['orderDetails'];
+    });
+
+    this.payNowForm = this.fb.group({
+      date: new FormControl(new Date().toISOString().split('T')[0], [Validators.required]),
+      location: new FormControl('', [Validators.required]),
+      price: new FormControl(this.cartService.cartTotalPrice, [Validators.required]),
+      productname: new FormControl(this.orderDetails, [Validators.required]),
+      status: new FormControl('Confirm', [Validators.required]),
+      user_id: new FormControl(this.userId, [Validators.required]),
+      username: new FormControl('', [Validators.required]),
+      pay_method: new FormControl(this.pay_method, [Validators.required]),
+      tp: new FormControl('', [Validators.required]),
+      email_address: new FormControl('', [Validators.required]),
+    });
+  }
+
+  async payNow(): Promise<void> {
+    const alertPlaceholder = document.getElementById('alert-placeholder');
+
+    const showAlertWarning = (message: string, type: string) => {
+      const alertDiv = document.createElement('div');
+      alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+      alertDiv.role = 'alert';
+      alertDiv.innerHTML = `
+      <i class="fa-solid fa-triangle-exclamation mx-4"></i>
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      `;
+      alertPlaceholder?.appendChild(alertDiv);
+
+      setTimeout(() => {
+        alertDiv.classList.remove('show');
+        alertDiv.classList.add('fade');
+        setTimeout(() => alertDiv.remove(), 150);
+      }, 3000);
+    };
+
+    const showAlertSuccess = (message: string, type: string) => {
+      const alertDiv = document.createElement('div');
+      alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+      alertDiv.role = 'alert';
+      alertDiv.innerHTML = `
+      <i class="fa-solid fa-circle-check"></i>
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      `;
+      alertPlaceholder?.appendChild(alertDiv);
+
+      setTimeout(() => {
+        alertDiv.classList.remove('show');
+        alertDiv.classList.add('fade');
+        setTimeout(() => alertDiv.remove(), 150);
+      }, 3000);
+    };
+
+    if (this.payNowForm?.invalid) {
+      console.log(this.payNowForm?.getRawValue());
+      showAlertWarning("Please fill all details correctly.", "warning");
+    } else {
+      this.orderService.addOrder(this.payNowForm?.getRawValue()).then(async result => {
+        this.payNowForm?.reset();
+        showAlertSuccess("Order added successfully.", "Success")
+        this.router.navigate(['/payment-success']);
+        console.log(result);
+      });
+      await this.emailService.addOrderEmail(this.payNowForm?.getRawValue()).then(result => {
+      });
+      
+    }
+  }
+}

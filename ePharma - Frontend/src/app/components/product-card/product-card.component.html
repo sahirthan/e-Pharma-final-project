@@ -1,0 +1,17 @@
+<div class="cardbox " >
+    <div class="cardimage-outer ">
+        <div class="cardimg " [routerLink]="['/singleProduct', product.product_id]">
+            <img class="product-img" [src]="product.image_url || 'assets/images/R.png'" alt="Card image cap" (error)="onImageLoadError($event)">
+        </div>
+    </div> 
+    <div class="card-details-outer text-center">
+        <p class="" style="font-size: 18px;" >{{product.name}}</p>
+    </div> 
+    <div class="card-details-outer">
+        <p class="small-text k-theme">LKR {{product.price}}</p>
+    </div> 
+     
+    <div class="add-card-outer">
+        <button (click)="cartService.addToCart(product)" class="btn btn-outline-dark mb-3 d-block " ><i class="fas fa-cart-shopping me-2"></i>Add to Cart</button>
+    </div> 
+</div>

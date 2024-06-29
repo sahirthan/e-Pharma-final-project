@@ -1,0 +1,14 @@
+.product-img {
+    width: 450px;
+    height: 450px;
+    object-fit: cover;
+    border: 1px solid #000;
+    border-radius: 30px;
+}
+.text-section {
+    text-align: left;
+}
+.box{
+    border: 1px solid #969696;
+    border-radius: 20px;
+}

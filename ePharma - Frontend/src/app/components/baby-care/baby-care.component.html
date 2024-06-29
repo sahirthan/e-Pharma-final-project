@@ -1,0 +1,15 @@
+<div class="col py-5 cus-bg-color">
+    <div class="col-12 text-center pt-4 pb-2">
+        <p class="header-text"style="line-height: 1; font-size: 1.7rem;" >Baby Care </p>
+    </div>
+    <div class="container">
+        <div class="menu-grid">
+            <div *ngFor="let product of products">
+                <app-product-card [product]="product"></app-product-card>
+            </div>
+            
+        </div>
+    </div>
+</div>
+    
+

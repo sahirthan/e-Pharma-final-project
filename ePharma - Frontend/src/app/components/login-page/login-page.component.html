@@ -1,0 +1,37 @@
+
+<div class="container">
+    <div id="alert-placeholder"></div>
+    <div class="row">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4 my-5">
+            <h1 class="text-center fw-bold">Login</h1>
+            <form class="mx-1 mx-md-4" (submit)="login($event)">
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="form-outline flex-fill mb-0 pt-5">
+                        <label class="form-label fw-bold" for="username">user Name</label>
+                        <input type="text" id="username" name="username" class="form-control"  required>
+                    </div>
+                </div>
+    
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="form-outline flex-fill mb-0">
+                        <label class="form-label fw-bold" for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control"required>
+                    </div>
+                </div>
+    
+                <div class="d-flex justify-content-center mb-3 mb-lg-4 btn-subs">
+                    <button type="submit" class="btn btn-shape ">Login</button>
+                </div>
+                <div class="d-flex justify-content-center mb-lg-4 btn-subs">
+                    <button (click)="navigateToRegister()" class="btn  ">Not a member? Sign Up</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-4">
+            
+        </div>
+    </div>
+</div>

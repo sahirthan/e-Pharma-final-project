@@ -1,0 +1,32 @@
+<div class="col py-5 cus-bg-color">
+    <div class="row">
+        <div class="col-9">
+            <div class="col-12 ms-5 text-center  ">
+                <p class="header-text"style="line-height: 1;font-size: 1.7rem;" >Products</p>
+                <p class="header-support-text">Order it for you or for your beloved ones.</p>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="row header-panel">
+                <div class="colmx-auto">
+                    <div class="input-group custom-search-bar">
+                        <input type="text" class="form-control" placeholder="Enter Product Name" (input)="onSearch($event)">
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="container">
+        <div class="menu-grid">
+            <div *ngFor="let product of searchProductList">
+                <app-product-card [product]="product"></app-product-card>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+
